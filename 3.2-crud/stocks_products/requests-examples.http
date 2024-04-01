@@ -7,7 +7,7 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор",
+  "title": "Помидор2",
   "description": "Лучшие помидоры на рынке"
 }
 
@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 
 # удаление продукта
-DELETE {{baseUrl}}/products/1/
+DELETE {{baseUrl}}/products/4/
 Content-Type: application/json
 
 ###
@@ -46,38 +46,56 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "Склад12",
   "positions": [
     {
       "product": 2,
-      "quantity": 250,
-      "price": 120.50
-    },
-    {
-      "product": 3,
       "quantity": 100,
-      "price": 180
+      "price": 127
     }
   ]
 }
 
 ###
 
+# получение складов
+GET {{baseUrl}}/stocks/
+Content-Type: application/json
+
+###
+
+# получение склада
+GET {{baseUrl}}/stocks/9
+Content-Type: application/json
+
+###
+
+# удаление склада
+DELETE {{baseUrl}}/stocks/2/
+Content-Type: application/json
+
+###
+
 # обновляем записи на складе
-PATCH {{baseUrl}}/stocks/4/
+PATCH {{baseUrl}}/stocks/10/
 Content-Type: application/json
 
 {
   "positions": [
     {
       "product": 2,
-      "quantity": 100,
-      "price": 130.80
+      "quantity": 101,
+      "price": 127
     },
     {
       "product": 3,
-      "quantity": 243,
-      "price": 145
+      "quantity": 110,
+      "price": 158
+    },
+    {
+      "product": 3,
+      "quantity": 170,
+      "price": 155
     }
   ]
 }
@@ -86,4 +104,10 @@ Content-Type: application/json
 
 # поиск складов, где есть определенный продукт
 GET {{baseUrl}}/stocks/?products=2
+Content-Type: application/json
+
+###
+
+# поиск складов, где есть определенный продукт (по части его названия или описания)
+GET {{baseUrl}}/stocks/?search=помид
 Content-Type: application/json
